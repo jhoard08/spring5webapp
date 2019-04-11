@@ -30,11 +30,8 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> 
     }
 
     private void initData(){
-
-        Publisher publisher = new Publisher();
-        publisher.setName("Pearson");
-        publisher.setAddress("110 Penn Lane");
-
+        //Pearson
+        Publisher publisher = new Publisher("Pearson","110 Penn Lane");
         publisherRepository.save(publisher);
 
         //Eric
@@ -47,16 +44,18 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> 
         authorRepository.save(eric);
         bookRepository.save(ddd);
 
+        //RELX
+        Publisher relx = new Publisher("RELX Group", "2392 Hollywood Lane");
+        publisherRepository.save(relx);
 
         //Rod
         Author rod = new Author("Rod", "Johnson");
-        Book noEJB = new Book("J2EE Development without EJB", "23344", publisher);
+        Book noEJB = new Book("J2EE Development without EJB", "23344", relx);
         rod.getBooks().add(noEJB);
 
 
         authorRepository.save(rod);
         bookRepository.save(noEJB);
-
 
     }
 
